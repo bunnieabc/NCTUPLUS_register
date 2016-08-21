@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>NCTU+</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative3.css" type="text/css">
+		<link rel="stylesheet" href="css/course_content.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<style>
+		 a
+		{
+			text-decoration:none;
+		}
+		.axis path,
+		.axis line {
+			fill: none;
+			stroke: #4caedb;
+			shape-rendering: crispEdges;
+		}
+
+		.bar {
+			fill: steelblue;
+		}
+		.bar:hover
+		{
+			opacity:0.9;
+		}
+		.x.axis path {
+			stroke: #4caedb;
+		}
+		svg
+		{
+			background:#222d3f;
+			border-radius:5px;
+			
+		}
+		.d3-tip {
+			line-height: 1;
+			font-weight: bold;
+			padding: 12px;
+			background:#fff;
+			color:#000;
+			border-radius: 2px;
+		}
+
+	/* Creates a small triangle extender for the tooltip */
+	.d3-tip:after {
+		box-sizing: border-box;
+		display: inline;
+		font-size: 10px;
+		width: 100%;
+		line-height: 1;
+		color:#fff;
+		content: "\25BC";
+		position: absolute;
+		text-align: center;
+	}
+
+	/* Style northward tooltips differently */
+	.d3-tip.n:after {
+		margin: -1px 0 0 0;
+		top: 100%;
+		left: 0;
+	}
+	.svg2,.svg3
+	{
+		background:none;
+		height:auto;
+		margin-top:36px;
+	}
+	
+	.grid .tick {
+    stroke: #5ebddc;
+    stroke-opacity:0.3;
+	}
+	.grid path {
+		stroke-width:1px;
+		stroke-opacity:0.3;
+	}
+	.avg_score
+	{
+		height:130px;
+		width:110px;
+		background:#fff;
+		color:#333;
+		border-radius:4px;
+		float:left;
+		display:inline-block;
+		text-align:center;
+		line-height:30px;
+		
+		margin-top:23px;
+		margin-left:20px;
+		position:relative;
+	}
+	#bar-chart-info
+	{
+		float:left;
+		display:inline-block;
+		
+	}
+	.old-exam-upload
+	{
+		border:2px #888 dotted;
+		width:80%;
+		height:120px;
+		border-radius:6px;
+	}
+	
+	.old-exam-btn
+	{
+		background:#fd3b3c;
+		border-radius:4px;
+		line-height:26px;
+		text-align:center;
+		color:#fff;
+		display:inline-block;
+		margin-left:10px;
+		width:60px;
+	}
+	.prof-compare
+	{
+		background:#ccc;
+		border-radius:8px;
+		padding:20px;
+		height:300px;
+		overflow:scroll;
+	}
+	.rate2
+	{
+		border-radius:6px;
+		background:#fff;
+		width:300px;
+		height:200px;
+		margin:20px;
+		float:left;
+	}
+	.rate2-title
+	{
+		background:#28699a;
+		width:100%;
+		height:40px;
+		line-height:40px;
+		color:#fff;
+		text-align:center;
+		overflow:hidden;
+		position:relative;
+	}
+	</style>
+</head>
+
+<body id="page-top" class="gray-bg">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top header-class" style="font-size:20px;">
+        <div class="container"  >
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+									NCTU+
+								</a>
+            </div>
+
+            <!-- Collect the nav links, s, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="font-family:'微軟正黑體','Microsoft JhengHei';">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a class="page-scroll" href="#">二手書</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="about.html">全校課程</a>
+                    </li>
+                    
+                    <li>
+                        <a class="page-scroll" href="#portfolio">模擬排課</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">算學分</a>
+                    </li>
+                </ul>
+								<ul class="nav navbar-nav navbar-right">
+                    <!--<li style="line-height:50px;">
+											<input type="text" name="course_search" value="課程搜尋"></input>
+											<i class="fa fa-1x  fa-search wow bounceIn text-white" data-wow-delay=".1s"></i>
+                    </li>-->
+										
+										<li id="func" >
+												
+													<a class="page-scroll" id="test2">
+														<i class="fa fa-1x fa-caret-down text-light" style="line-height:0px;"></i>
+														個人功能
+													</a>
+													<ul class="chart" style="display:none">
+														<li class="list1" >
+															課程收藏
+														</li>
+														<li class="list1">
+															課表
+														</li>
+													</ul>
+                    </li>
+										<li class="func2" style="display:none">
+											<a class="page-scroll" href="#">　課程收藏</a>
+										</li>
+										<li class="func2" style="display:none">
+											<a class="page-scroll" href="#">　課表</a>
+										</li>
+										<li>
+                        <a class="page-scroll" href="#">登入</a>
+                    </li>
+										
+                </ul>
+            </div>
+        </div>
+    </nav>
+		<!--blue Menu-->
+	
+		<div class="col-md-2 blue-menu">
+			<div class="blue-btn">課程相關</div>
+			<div class="blue-btn">課程資訊</div>
+			<div class="blue-btn">課程心得</div>
+			<div class="blue-btn">留言板</div>
+			<div class="blue-btn">教授比一比</div>
+			<div class="blue-btn">考古題</div>
+			<div class="blue-btn">討論區</div>
+			<div class="blue-not-btn" style="border:none">=</div>
+			<div class="blue-not-btn">課程收藏</div>
+			<a href="#"><div class="blue-btn2" >當代世界世界世界世...</div></a>
+		</div>
+		
+		<div class="container"  >
+		<section class="col-md-10" style="margin-left:15%">
+				<!--標題與分享按鈕--->
+				<div class="block1">
+					<div class="title">
+						<h2 style="display:inline-block;line-height:60px;">當代世界:環境危機與生態永續</h2>
+						<div class="title-right">
+							<div class="btn1 blue"> FB分享</div>
+							<div class="btn1 red"> + 收藏</div>
+						</div>
+					</div>
+				<!--圓餅圖:涼度 甜度 深度--->
+					<div class="separation-line"></div>
+					<div class="inside-block ">
+						<div class="rate col-md2">
+							<div class="mock-up">100%</div>
+							<div class="mock-up-type">涼度(10人)</div>
+						</div>
+						
+						<div class="rate col-md2">
+							<div class="mock-up">100%</div>
+							<div class="mock-up-type">深度(10人)</div>
+						</div>
+						
+						<div class="rate col-md2">
+							<div class="mock-up">100%</div>
+							<div class="mock-up-type">甜度(10人)</div>
+						</div>
+						<div class="mock-up-rate">
+							我的評分
+						</div>
+					</div>
+					<!--資訊:表格--->
+					<div class="inside-block ">
+						<h3><strong>課程資訊</strong></h3><BR>
+						<table class="table-invisible" >
+							<tr>
+								<td>學分 : 2</td><td>永久課號 : 1234</td>
+							</tr>
+							<tr>
+								<td>開課學期 : 104上</td><td>課程綱要 : <a href="#">前往查看</a></td>
+							</tr>
+						</table>
+						<BR><BR>
+						<table class="table2" >
+							<tr style="background:#adc9f1">
+								<th>學期</th><th>單位</th><th>課號</th><th>選別</th>
+								<th>修課人數/上限</th><th>時間</th><th>教室</th><th>年級</th><th>備註</th>
+							</tr>
+							<tr>
+								<td>開課學期 : 104上</td><td>課程綱要 : <a href="#">前往查看</a></td>
+							</tr>
+						</table>
+						<br>
+						<div class=" line-blue"><i class="fa fa-1x fa-chevron-down" style="line-height:40px;"></i> 歷年課程</div>
+					</div>
+					<!--攻略:考試周/作業周--->
+					<div class="inside-block ">
+						<h3><strong>課程攻略</strong></h3>	
+						<BR><BR>
+						<table class="table-invisible" style="width:auto;">
+							<tr>
+								<td class=" table-title-width">點名頻率</td>
+								<td>
+									<table class="table-frequency">
+										<tr>
+											<td style="background:#fc3b3c">經常</td>
+											<td style="background:#f47473">偶爾</td>
+											<td style="background:#ffa8a7">不點名</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							
+							<tr>
+								<td class=" table-title-width">考試周</td>
+								<td>
+									<table class="table-frequency2">
+										<tr>
+											<td>1</td><td class="table-frequency2-test">2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+											<td>7</td><td>8</td><td>9</td><td class="table-frequency2-test">10</td><td>11</td><td>12</td>
+											<td>13</td><td>14</td><td>15</td><td class="table-frequency2-test">16</td><td>17</td><td>18</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							
+							<tr>
+								<td class=" table-title-width">作業周</td>
+								<td>
+									<table class="table-frequency2">
+										<tr>
+											<td>1</td><td class="table-frequency2-test">2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+											<td>7</td><td>8</td><td>9</td><td class="table-frequency2-test">10</td><td>11</td><td>12</td>
+											<td>13</td><td>14</td><td>15</td><td class="table-frequency2-test">16</td><td>17</td><td>18</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<br><br>
+						其他補充
+						<br>
+						<div class="strategy-board col-md-10">
+							<table style="width:100%;">
+								<tr>
+									<td><div class="strategy-type strategy-exam">考試</div>小考很多次 題目只有一些</td>
+								</tr>
+								<tr>
+									<td><div class="strategy-type strategy-hw">作業</div>作業很多次 題目只有一些</td>
+								</tr>
+								<tr>
+									<td><div class="strategy-type strategy-other">其他</div>生活中的物理課程</td>
+								</tr>
+								<tr>
+									<td><div class="strategy-type strategy-other">其他</div>生活中的物理課程</td>
+								</tr>
+							</table>
+						</div>
+					
+						<div class="col-md-12" style="width:100%; padding:0">
+							<div class=" line-blue"><i class="fa fa-1x fa-pencil" style="line-height:40px;"></i> 分享攻略</div>
+						</div>
+					</div>
+					<!--心得文--->
+					<div class="inside-block">
+						<h3><strong>心得分享</strong></h3>
+						<br><br>
+						<!--心得顏色-由淺到深: #39aaff, #198adf, #1268a9, #115689, #16496f, #0f334d>
+						<!--心得板塊-->
+						<div class="opinion">
+							<a href="#" style="text-decoration:none;">
+							<div class="opinion-view">
+								<h4><strong>心得標題</strong></h4>
+								<p>
+									文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容
+									文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容...
+								</p>
+								<div class="opinion-btn">繼續閱讀</div>
+							</div>
+							</a>
+							<div class="opinion-info">
+								<table style="width:100%;">
+									<tr>
+										<td><img src="img/user.jpg" class="img-32px-round">使用者名</td>
+										<td><i class="fa fa-1x fa-lg fa-eye" ></i> 123</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!--心得板塊-->
+						<!--心得板塊-->
+						<div class="opinion" style="background:#198adf;">
+							<a href="#" style="text-decoration:none;">
+							<div class="opinion-view">
+								<h4><strong>心得標題</strong></h4>
+								<p>
+									文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容
+									文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容...
+								</p>
+								<div class="opinion-btn">繼續閱讀</div>
+							</div>
+							</a>
+							<div class="opinion-info">
+								<table style="width:100%;">
+									<tr>
+										<td><img src="img/user.jpg" class="img-32px-round">使用者名</td>
+										<td><i class="fa fa-1x fa-lg fa-eye" ></i> 123</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!--心得板塊-->
+						<!--心得板塊-->
+						<!--color can be change-->
+						<div class="opinion" style="background:#1268a9;">
+							<a href="#" style="text-decoration:none;">
+							<div class="opinion-view">
+								<h4><strong>心得標題</strong></h4>
+								<p>
+									文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容
+									文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容文章內容...
+								</p>
+								<div class="opinion-btn">繼續閱讀</div>
+							</div>
+							</a>
+							<div class="opinion-info">
+								<table style="width:100%;">
+									<tr>
+										<td><img src="img/user.jpg" class="img-32px-round">使用者名</td>
+										<td><i class="fa fa-1x fa-lg fa-eye" ></i> 123</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!--end of 心得板塊-->
+						<!-- Modal -->
+						<div class="modal fade" id="myModal" role="dialog">
+							<div class="modal-dialog">
+							
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header" >
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4><i class="fa fa-1x fa-lg fa-book"></i></span> 課程心得</h4>
+									</div>
+									<div class="modal-body" style="padding:40px 50px;">
+										<!--content-->
+									</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<!--end of Modal -->
+					</div>
+					
+					<!--bar char-->
+					<div class="inside-block">
+						<div id="bar-chart">
+							<h3><strong>歷年統計</strong></h3>
+							<br><br>
+						</div>
+						<div class="info-out">
+							<div id="bar-chart-info"></div>
+							<div class="avg_score">
+									<h1><strong>88</strong></h1>
+									本課程平均成績
+							</div>
+							<div class="avg_score">
+									<h1><strong>89</strong></h1>
+									同課程最高成績
+							</div>
+							<div class="avg_score">
+									<h2><strong>粼粼林</strong></h2>
+									同課程最高分老師
+							</div>
+						</div>
+					</div>
+					<!--end of bar char-->
+				
+				<!--考古題上傳-->
+				<div class="inside-block">
+					<h3><strong>考古題下載</strong></h3><br>
+					<span>登入後才能下載</span><br><span style="color:red">!!!!!請注重智慧財產權!!!!!</span><br><br><br>
+					<table class="table2" >
+						<tr style="background:#adc9f1">
+							<th>開課學期</th><th>課程名稱</th>
+							<th>提供者</th><th>下載連結</th><th>考試別</th><th>備註</th>
+						</tr>
+						<tr>
+							<td>104上</td><td>當代世界:環境危機與生態永續</td>
+							<td>王王王</td>
+							<td><a href="#"><div class="old-exam-btn">連結</div></a></td><td>期中考</td>
+						</tr>
+						<tr>
+							<td>104上</td><td>當代世界:環境危機與生態永續</td>
+							<td>王王王</td>
+							<td><a href="#"><div class="old-exam-btn">連結</div></a></td><td>期中考</td>
+						</tr>
+					</table><br>
+					<div class=" line-blue"><i class="fa fa-1x fa-arrow-up" style="line-height:40px;"></i> 上傳檔案</div>	
+				</div>				
+				<!--end of 考古題上傳-->
+				<!--教授比一比-->
+				<div class="inside-block">
+				<h3><strong>教授比一比</strong></h3><br><br>
+					<div class="prof-compare">
+						<div class="rate2">
+							<div class="rate2-title">教授名稱</div>
+						</div>
+						<div class="rate2">
+							<div class="rate2-title">教授名稱</div>
+						</div>
+						<div class="rate2">
+							<div class="rate2-title">教授名稱</div>
+						</div>
+					</div>
+					
+				</div>
+				<!--end of 教授比一比-->
+			</div>
+		</section>
+	</div>
+		<!--Footer Icon-->
+		
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+		<script>
+		$(document).ready(function(){
+				$(".opinion").click(function(){
+						$("#myModal").modal();
+				});
+		});
+		</script>
+    <!-- Plugin JavaScript -->
+   
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+		<script src="js/1.js"></script>
+		<script src="//d3js.org/d3.v3.min.js"></script>
+		<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script>
+
+var margin = {top:57, right: 20, bottom: 57, left: 60},
+    width = window.innerWidth*0.63 - margin.left - margin.right,
+    height = 420 - margin.top - margin.bottom;
+
+var x0 = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .33);
+
+var x1 = d3.scale.ordinal();
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var color = d3.scale.ordinal()
+    .range(["#379dff", "#68cdc9", "#9de845", "#f9f943", "#f6c141", "#f97850", "#fd3a4a", "#fd398b", "#d970d5", "#a789f3", "#6f85d5"]);
+
+var xAxis = d3.svg.axis()
+    .scale(x0)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(d3.format(".2s"));
+		
+
+var svg = d3.select("#bar-chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+		.style("fill","#95e6f5")
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("data2.csv", function(error, data) {
+  if (error) throw error;
+		
+
+
+  var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "Name"; });
+
+  data.forEach(function(d) {
+    d.ages = ageNames.map(function(name) { return {name: name, value: +d[name]}; });
+  });
+  x0.domain(data.map(function(d) { return d.Name; }));
+  x1.domain(ageNames).rangeRoundBands([0, x0.rangeBand()]);
+  y.domain([0, 100]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+			.call(xAxis);
+			
+	
+    svg.append("g")         
+        .attr("class", "grid")
+        .call(make_y_axis()
+            .tickSize(-width, 0, 0)
+            .tickFormat("")
+        )		
+	
+	var tip = d3.tip()
+		.attr('class', 'd3-tip')
+		.offset([-10, 0])
+		.html(function(d) {
+			return "<strong>" + d.name + "</strong><br><br>"+"<font style='color:#666'>分數 : </font>" + "<span style='color:#227ea9'> "+ d.value +"</span>";
+		})	
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "translate(-10,-30)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("分數");
+	
+	svg.call(tip);
+	
+  var state = svg.selectAll(".state")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x0(d.Name) + ",0)"; });
+
+  state.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      .attr("width", x1.rangeBand()-2)
+      .attr("x", function(d) { return x1(d.name); })
+      
+			.style("fill", function(d) { return color(d.name); })
+			.on('mouseover', tip.show)
+			.on('mousemove', tip.show)
+      .on('mouseout', tip.hide)
+			.attr("height", 0)
+			.attr("y", height)
+			.transition().delay(100).duration(600).ease("linear")
+			.attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); });
+			
+			
+	var legend = d3.select("#bar-chart-info").append("svg").attr("class","svg2").style("fill","none").selectAll(".legend")
+			.data(ageNames.slice())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate("+100 * parseInt(i/3)+"," +(i%3)*35 + ")"; });
+	legend.append("rect")
+      .attr("x", 30)
+      .attr("width", 15)
+      .attr("height", 15)
+      .style("fill", color);
+	legend.append("text")
+      .attr("x", 90)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+			.style("fill", "#000")
+      .text(function(d) { return d; });
+	/*var avg_score = d3.select("#bar-chart-info").append("svg").attr("class","svg3").data(ageNames.slice())
+		.enter()
+		.append("g")
+		.attr("class", "avg_score")
+		.attr("transform", function(d, i) { return "translate("+100 * parseInt(i/3)+"," +(i%3)*35 + ")"; });
+	*/
+function make_y_axis() {        
+    return d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .ticks(5)
+}
+/*
+  var legend = svg.selectAll(".legend")
+      .data(ageNames.slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+      .attr("x", width - 15)
+      .attr("width", 15)
+      .attr("height", 15)
+      .style("fill", color);
+
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+*/
+});
+
+</script>
+    <!-- Custom Theme JavaScript -->
+   
+
+</body>
+
+</html>

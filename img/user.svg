@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="64.7 160.8 445 445" enable-background="new 64.7 160.8 445 445" xml:space="preserve">
+<g id="圖層_2">
+</g>
+<g id="Layer_1">
+	<g>
+		<circle fill="#40BBFF" cx="287.2" cy="383.3" r="222.5"/>
+		<g>
+			<defs>
+				<circle id="SVGID_1_" cx="287.2" cy="383.3" r="222.5"/>
+			</defs>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  overflow="visible"/>
+			</clipPath>
+			<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="476.191" y1="592.6064" x2="238.1549" y2="322.933">
+				<stop  offset="0" style="stop-color:#000000;stop-opacity:0"/>
+				<stop  offset="1" style="stop-color:#000000"/>
+			</linearGradient>
+			<polygon opacity="0.62" clip-path="url(#SVGID_2_)" fill="url(#SVGID_3_)" points="528.2,502.9 542.1,476.1 334.6,268.6 
+				280.7,372.9 302.3,394.5 287.2,404.8 248.9,372.9 192.5,462.3 337.9,616.5 530,561 500,531.1 			"/>
+		</g>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M303.8,457.7c0,15.4,5.6,29.5,14.9,40.3c-8.8,1.7-18,2.5-27.3,2.5c-38.1,0-72.8-14.4-98.9-38.2v-0.1
+					c0-39.4,23.1-73.5,56.5-89.4c12.5,12.5,27.2,19.3,42.5,19.3c15.2,0,29.9-6.7,42.5-19.3c11.7,5.6,22.2,13.4,30.8,22.9
+					C331,396.3,303.8,423.9,303.8,457.7z"/>
+				<path fill="#FFFFFF" d="M291.4,248.3c30.2,0,54.7,24.5,54.7,54.7c0,30.2-24.5,71.6-54.7,71.6c-30.2,0-54.7-41.3-54.7-71.6
+					C236.7,272.8,261.2,248.3,291.4,248.3z"/>
+			</g>
+			<circle fill="#EF806F" cx="365.7" cy="457.7" r="52.9"/>
+			<rect x="329.2" y="452.8" fill="#FFFFFF" width="73.1" height="9.7"/>
+			<rect x="360.8" y="421.1" fill="#FFFFFF" width="9.7" height="73.1"/>
+		</g>
+	</g>
+</g>
+</svg>
